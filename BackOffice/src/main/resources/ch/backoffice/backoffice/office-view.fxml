@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="ch.backoffice.backoffice.OfficeController"
+            stylesheets="@office-style.css" styleClass="root">
+    <VBox AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"
+          AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+          alignment="TOP_CENTER" spacing="16.0">
+        <padding>
+            <Insets bottom="40.0" left="80.0" right="80.0" top="40.0"/>
+        </padding>
+
+        <!-- En-tête : logo + identité -->
+        <HBox alignment="CENTER_LEFT" spacing="20.0" styleClass="header">
+            <ImageView fx:id="Logo" fitWidth="250" fitHeight="250" preserveRatio="true" styleClass="logo"/>
+            <VBox spacing="4.0" HBox.hgrow="ALWAYS">
+                <Label fx:id="Name" styleClass="title"/>
+                <Label fx:id="Id" styleClass="subtitle"/>
+            </VBox>
+        </HBox>
+
+        <Separator VBox.vgrow="NEVER"/>
+
+        <!-- Fiche produit : occupe tout l'espace restant -->
+        <VBox spacing="12.0" styleClass="card" VBox.vgrow="ALWAYS">
+            <Label text="Produit" styleClass="section-title"/>
+            <HBox alignment="CENTER" spacing="40.0" VBox.vgrow="ALWAYS">
+                <ImageView fx:id="ProductImage" fitWidth="220" fitHeight="220"
+                           preserveRatio="true" styleClass="product-image"/>
+                <VBox alignment="CENTER_LEFT" spacing="8.0">
+                    <Label fx:id="ProductName" styleClass="product-name"/>
+                    <Label fx:id="ProductId" styleClass="product-id"/>
+                </VBox>
+            </HBox>
+        </VBox>
+    </VBox>
+</AnchorPane>

@@ -5,6 +5,7 @@ module ch.backoffice.backoffice {
     requires org.controlsfx.controls;
     requires com.dlsc.formsfx;
     requires java.desktop;
+    requires com.google.gson;
 
     opens ch.backoffice.backoffice to javafx.fxml;
     exports ch.backoffice.backoffice;

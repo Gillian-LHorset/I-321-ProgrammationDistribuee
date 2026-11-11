@@ -4,8 +4,9 @@ import ch.backoffice.backoffice.models.bpModel;
 import ch.backoffice.backoffice.models.produit;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import javafx.scene.image.Image;
+
 import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.Base64;
@@ -17,11 +18,11 @@ public class BpJsonDeserializer {
         JsonObject sp = root.getAsJsonObject("Special");
 
         return new bpModel(
-                root.get("ID").getAsString(),
+                root.get("Id").getAsString(),
                 root.get("Name").getAsString(),
                 decodeBase64Image(root.get("Logo").getAsString()),
                 new produit(
-                        sp.get("ID").getAsString(),
+                        sp.get("Id").getAsString(),
                         sp.get("Name").getAsString(),
                         decodeBase64Image(sp.get("Picture").getAsString()),
                         sp.has("Price") && !sp.get("Price").isJsonNull()
@@ -30,10 +31,11 @@ public class BpJsonDeserializer {
         );
     }
 
-    private static BufferedImage decodeBase64Image(String dataUri) throws IOException {
-        // retire le préfixe "data:image/png;base64,"
-        String base64 = dataUri.substring(dataUri.indexOf(',') + 1);
+    private static Image decodeBase64Image(String dataUri) {
+        String base64 = dataUri.contains(",")
+                ? dataUri.substring(dataUri.indexOf(',') + 1)
+                : dataUri;
         byte[] bytes = Base64.getDecoder().decode(base64);
-        return ImageIO.read(new ByteArrayInputStream(bytes));
+        return new Image(new ByteArrayInputStream(bytes));
     }
 }
