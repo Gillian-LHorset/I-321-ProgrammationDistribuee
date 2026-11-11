@@ -1,0 +1,71 @@
+{
+  "projectName": "I-321-ProgrammationDistribuee",
+  "me": "Gillian-LHorset",
+  "journalStartDate": null,
+  "columns": [
+    {
+      "label": "Date",
+      "source": "date",
+      "format": "date",
+      "field": "date"
+    },
+    {
+      "label": "Tâche",
+      "source": "name",
+      "field": "name"
+    },
+    {
+      "label": "Description",
+      "source": "description",
+      "field": "description"
+    },
+    {
+      "label": "Durée",
+      "source": "duration",
+      "format": "duration",
+      "field": "duration"
+    },
+    {
+      "label": "Statut",
+      "source": "status",
+      "format": "badge",
+      "field": "status"
+    },
+    {
+      "label": "Auteur",
+      "source": "author"
+    }
+  ],
+  "exceptions": [
+    {
+      "id": "46a6acc7-e40f-4a3a-a1ba-f01ff1c0cbe3",
+      "type": "commitless",
+      "author": "Gillian-LHorset",
+      "date": "2026-11-11T13:30:00.000Z",
+      "name": "feat(OfficeApplication): Ajout de la désérialisation du json par défault et de l'affichage lors du lancement de l'application",
+      "description": "",
+      "duration": 60,
+      "status": "DONE"
+    },
+    {
+      "id": "ec158c77-6c36-4ec6-8a40-f4982a42c8b7",
+      "type": "commitless",
+      "author": "Gillian-LHorset",
+      "date": "2026-11-11T12:10:00.000Z",
+      "name": "Disscution avec l'équipe et le chef de projet",
+      "description": "Voir Carnet de voyage",
+      "duration": 90,
+      "status": "DONE"
+    },
+    {
+      "id": "dcffe931-c534-4486-ba2e-cb87a2b578d2",
+      "type": "commitless",
+      "author": "Gillian-LHorset",
+      "date": "2026-11-04T12:10:00.000Z",
+      "name": "Absence",
+      "description": "",
+      "duration": 240,
+      "status": ""
+    }
+  ]
+}
