@@ -1,6 +1,7 @@
 package ch.backoffice.backoffice;
 
 import ch.backoffice.backoffice.models.bpModel;
+import ch.backoffice.backoffice.mqtt.MqttService;
 import ch.backoffice.backoffice.serialisation.BpJsonDeserializer;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +12,7 @@ import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+
 
 public class OfficeApplication extends Application {
     @Override
@@ -34,8 +36,5 @@ public class OfficeApplication extends Application {
         stage.setTitle("Au MontSQL");
         stage.setScene(scene);
         stage.show();
-    }
-    public static void main(String[] args) {
-        launch();
     }
 }

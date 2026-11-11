@@ -29,9 +29,9 @@
 
 .card {
     -fx-background-color: #27272b;
-    -fx-background-radius: 12;
+    -fx-background-radius: 14;
     -fx-border-color: #3a3a40;
-    -fx-border-radius: 12;
+    -fx-border-radius: 14;
     -fx-border-width: 1;
     -fx-padding: 24;
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.6), 12, 0.2, 0, 6);
