@@ -1,6 +1,14 @@
 package ch.backoffice.backoffice.mqtt;
 
+import ch.backoffice.backoffice.serialisation.TimeJsonDeserializer;
 import org.eclipse.paho.client.mqttv3.*;
+
+import java.nio.charset.StandardCharsets;
+import java.util.Date;
+import java.time.Instant;
+
+import static ch.backoffice.backoffice.OfficeController.Time;
+import static java.awt.SystemColor.text;
 
 public class MqttService {
 
@@ -17,8 +25,12 @@ public class MqttService {
             client.setCallback(new MqttCallback() {
                 @Override
                 public void messageArrived(String topic, MqttMessage message) {
-                    String payload = new String(message.getPayload());
-                    System.out.println("Reçu sur " + topic + " : " + payload);
+                    Integer timestamp = TimeJsonDeserializer.deserialize(
+                            new String(message.getPayload(), StandardCharsets.UTF_8));
+                    if (timestamp == null) return;
+                    System.out.println("Reçu sur " + topic + " : " + timestamp);
+
+                    setTime(timestamp);
                 }
 
                 @Override

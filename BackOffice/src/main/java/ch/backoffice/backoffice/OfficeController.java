@@ -1,13 +1,17 @@
 package ch.backoffice.backoffice;
 
 import ch.backoffice.backoffice.models.bpModel;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-import javafx.scene.image.Image;
 
-import java.awt.image.BufferedImage;
-import java.awt.image.ImageProducer;
+import java.io.IOException;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 public class OfficeController {
     @FXML
@@ -17,6 +21,7 @@ public class OfficeController {
     public Label ProductId;
     public Label ProductName;
     public ImageView  ProductImage;
+    public Label Time;
 
     @FXML
     public void setBackOfficeData(bpModel bp) {
@@ -26,5 +31,14 @@ public class OfficeController {
         ProductId.setText(bp.Special.ID);
         ProductName.setText(bp.Special.Name);
         ProductImage.setImage(bp.Special.Picture);
+    }
+
+    public void onTestButtonClick(ActionEvent event) throws IOException {
+
+    }
+    public void setTime(Integer ts) {
+        Time.setText(Date.from(Instant.ofEpochSecond(ts))
+                .toInstant().atZone(ZoneId.of("Europe/Zurich"))
+                .format(DateTimeFormatter.ofPattern("HH:mm:ss")));
     }
 }

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://exemple.ch/schema/bpmodel.schema.json",
+  "title": "bpModel",
+  "type": "object",
+  "required": ["ID", "Name", "Special"],
+  "properties": {
+    "ID": { "type": "string" },
+    "Name": { "type": "string", "minLength": 1 },
+    "Logo": { "type": "string", "format": "uri" },
+    "Special": {
+      "type": "object",
+      "required": ["ID", "Name", "Price"],
+      "properties": {
+        "ID": { "type": "string" },
+        "Name": { "type": "string", "minLength": 1 },
+        "Picture": { "type": "string", "format": "uri" },
+        "Price": { "type": "number", "minimum": 0 }
+      }
+    }
+  }
+}

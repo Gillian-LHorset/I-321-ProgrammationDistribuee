@@ -9,6 +9,7 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.AnchorPane?>
 
+<?import javafx.scene.control.Button?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml"
             fx:controller="ch.backoffice.backoffice.OfficeController"
             stylesheets="@office-style.css" styleClass="root">
@@ -42,5 +43,9 @@
                 </VBox>
             </HBox>
         </VBox>
+        <Label fx:id="Time" text="--:--:--"/>
     </VBox>
+    <Button fx:id="TestButton" onAction="#onTestButtonClick" text="hello button">
+
+    </Button>
 </AnchorPane>

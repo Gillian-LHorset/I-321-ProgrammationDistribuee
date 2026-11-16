@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ch.backoffice/schemas/message.schema.json",
+  "title": "Message MQTT du BackOffice",
+  "description": "Message JSON reçu via MQTT (Paho), validé avec json-schema-validator (draft 2020-12) puis désérialisé en bpModel/produit par Gson (BpJsonDeserializer).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["Id", "Name", "Logo", "Special"],
+  "properties": {
+    "Id": {
+      "type": "string",
+      "minLength": 1,
+      "title": "Identifiant du back-office",
+      "description": "Identifiant unique du point de vente, ex. « COM-1522 »."
+    },
+    "Name": {
+      "type": "string",
+      "minLength": 1,
+      "title": "Nom du back-office",
+      "description": "Nom affiché de l'établissement, ex. « Au MontSQL »."
+    },
+    "Logo": {
+      "type": "string",
+      "pattern": "^data:image/(png|jpe?g|gif|webp);base64,[A-Za-z0-9+/]+={0,2}$",
+      "title": "Logo",
+      "description": "Logo de l'établissement encodé en data URI base64, ex. « data:image/png;base64,iVBOR... »."
+    },
+    "Special": {
+      "type": "object",
+      "additionalProperties": false,
+      "title": "Produit vedette",
+      "description": "Produit mis en avant par le back-office (désérialisé en produit).",
+      "required": ["Id", "Name", "Picture"],
+      "properties": {
+        "Id": {
+          "type": "string",
+          "minLength": 1,
+          "title": "Identifiant du produit",
+          "description": "Identifiant unique du produit, ex. « PROD-1522 »."
+        },
+        "Name": {
+          "type": "string",
+          "minLength": 1,
+          "title": "Nom du produit",
+          "description": "Nom du produit vedette, ex. « Macaron ON Cascade »."
+        },
+        "Picture": {
+          "type": "string",
+          "pattern": "^data:image/(png|jpe?g|gif|webp);base64,[A-Za-z0-9+/]+={0,2}$",
+          "title": "Photo du produit",
+          "description": "Photo du produit encodée en data URI base64."
+        },
+        "Price": {
+          "type": "number",
+          "minimum": 0,
+          "title": "Prix",
+          "description": "Prix du produit (CHF). Champ optionnel : absent si le produit n'a pas de prix fixe."
+        }
+      }
+    }
+  },
+  "examples": [
+    {
+      "Id": "COM-1522",
+      "Name": "Au MontSQL",
+      "Logo": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUg==",
+      "Special": {
+        "Id": "PROD-1522",
+        "Name": "Macaron ON Cascade",
+        "Picture": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUg==",
+        "Price": 2550
+      }
+    },
+    {
+      "Id": "COM-0042",
+      "Name": "Café du Jura",
+      "Logo": "data:image/jpeg;base64,/9j/4AAQSkZJRg==",
+      "Special": {
+        "Id": "PROD-0007",
+        "Name": "Rösti complet",
+        "Picture": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUg=="
+      }
+    }
+  ]
+}
