@@ -31,6 +31,8 @@ replay_pid*
 /BackOffice/*.iws
 /BackOffice/*.iml
 /BackOffice/*.ipr
+/BackOffice/*.ipr
+/BackOffice/paho*/
 
 # Formats génériques (s'appliquent partout)
 target/
