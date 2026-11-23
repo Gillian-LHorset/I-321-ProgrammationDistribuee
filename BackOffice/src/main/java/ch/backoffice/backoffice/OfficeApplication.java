@@ -32,7 +32,8 @@ public class OfficeApplication extends Application {
 
         OfficeController controller = fxmlLoader.getController();
         controller.setBackOfficeData(myOffice);
-        MqttService.setTimeListener(ts -> Platform.runLater(() -> controller.setTime(ts)));
+        MqttService.setTimeListener(ts ->
+                Platform.runLater(() -> controller.setTime(ts)));
 
 
         stage.setTitle("Au MontSQL");
