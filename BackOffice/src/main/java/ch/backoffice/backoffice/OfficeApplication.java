@@ -4,6 +4,7 @@ import ch.backoffice.backoffice.models.bpModel;
 import ch.backoffice.backoffice.mqtt.MqttService;
 import ch.backoffice.backoffice.serialisation.BpJsonDeserializer;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -31,6 +32,7 @@ public class OfficeApplication extends Application {
 
         OfficeController controller = fxmlLoader.getController();
         controller.setBackOfficeData(myOffice);
+        MqttService.setTimeListener(ts -> Platform.runLater(() -> controller.setTime(ts)));
 
 
         stage.setTitle("Au MontSQL");

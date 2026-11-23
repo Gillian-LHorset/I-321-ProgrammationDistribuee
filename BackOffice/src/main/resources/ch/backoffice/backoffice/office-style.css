@@ -58,3 +58,7 @@
     -fx-effect: dropshadow(three-pass-box, rgba(225, 125, 210, 0.35), 10, 0.1, 0, 3);
     -fx-background-color: transparent;
 }
+
+.time {
+    -fx-text-fill: #F5F5F5;
+}

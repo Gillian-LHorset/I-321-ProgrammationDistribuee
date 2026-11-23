@@ -43,7 +43,7 @@
                 </VBox>
             </HBox>
         </VBox>
-        <Label fx:id="Time" text="--:--:--"/>
+        <Label fx:id="Time" text="--:--:--" styleClass="time"/>
     </VBox>
     <Button fx:id="TestButton" onAction="#onTestButtonClick" text="hello button">
 

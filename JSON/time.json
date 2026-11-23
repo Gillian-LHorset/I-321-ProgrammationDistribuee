@@ -1,0 +1,11 @@
+{
+  "v": 1,
+  "id": "3f6c2a9e-8b41-4d7a-9c5e-1a2b3c4d5e6f",
+  "from": "SERV-time",
+  "to": "*",
+  "ts": "2026-11-09T09:56:09Z",
+  "type": "time",
+  "payload": {
+    "timestamp": 1794218169
+  }
+}
