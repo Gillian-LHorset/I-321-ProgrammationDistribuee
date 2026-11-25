@@ -45,8 +45,6 @@ public class MqttService {
                 @Override
                 public void messageArrived(String topic, MqttMessage message) {
                     String payload = new String(message.getPayload(), StandardCharsets.UTF_8);
-                    // Log du payload JSON brut (diagnostic)
-                    System.out.println("MQTT [" + topic + "] payload brut : " + payload);
 
                     Integer timestamp = TimeJsonDeserializer.deserialize(payload);
                     if (timestamp == null) return;

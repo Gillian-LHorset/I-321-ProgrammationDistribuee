@@ -1,5 +1,6 @@
 package ch.backoffice.backoffice;
 
+import ch.backoffice.backoffice.config.Horaires;
 import ch.backoffice.backoffice.models.bpModel;
 import ch.backoffice.backoffice.mqtt.MqttService;
 import ch.backoffice.backoffice.serialisation.BpJsonDeserializer;
@@ -28,10 +29,18 @@ public class OfficeApplication extends Application {
         } catch (IOException e) {
             throw new UncheckedIOException("Fichier JSON illisible", e);
         }
+
+        Horaires horaires;
+        try {
+            horaires = Horaires.charger(Path.of("config.yml"));
+        } catch (IOException e) {
+            throw new UncheckedIOException("config.yml illisible", e);
+        }
         Scene scene = new Scene(fxmlLoader.load(), 1000, 600);
 
         OfficeController controller = fxmlLoader.getController();
         controller.setBackOfficeData(myOffice);
+        controller.setHoraires(horaires);
         MqttService.setTimeListener(ts ->
                 Platform.runLater(() -> controller.setTime(ts)));
 

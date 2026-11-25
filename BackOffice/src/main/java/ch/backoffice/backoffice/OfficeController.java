@@ -1,5 +1,6 @@
 package ch.backoffice.backoffice;
 
+import ch.backoffice.backoffice.config.Horaires;
 import ch.backoffice.backoffice.models.bpModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,6 +11,7 @@ import javafx.scene.image.ImageView;
 import java.io.IOException;
 import java.time.Instant;
 import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
@@ -22,6 +24,13 @@ public class OfficeController {
     public Label ProductName;
     public ImageView  ProductImage;
     public Label Time;
+    public Label Status;
+
+    private Horaires horaires;
+
+    public void setHoraires(Horaires horaires) {
+        this.horaires = horaires;
+    }
 
     @FXML
     public void setBackOfficeData(bpModel bp) {
@@ -37,8 +46,12 @@ public class OfficeController {
 
     }
     public void setTime(Integer ts) {
-        Time.setText(Date.from(Instant.ofEpochSecond(ts))
-                .toInstant().atZone(ZoneId.of("Europe/Zurich"))
-                .format(DateTimeFormatter.ofPattern("HH:mm:ss")));
+        ZonedDateTime maintenant = Instant.ofEpochSecond(ts)
+                .atZone(ZoneId.of("Europe/Zurich"));
+        Time.setText(maintenant.format(DateTimeFormatter.ofPattern("HH:mm:ss")));
+
+        boolean ouvert = horaires != null && horaires.estOuvert(maintenant.toLocalDateTime());
+        Status.setText(ouvert ? "Ouvert" : "Fermé");
+        Status.getStyleClass().setAll("status", ouvert ? "status-ouvert" : "status-ferme");
     }
 }

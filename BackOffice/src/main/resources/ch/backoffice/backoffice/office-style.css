@@ -61,4 +61,22 @@
 
 .time {
     -fx-text-fill: #F5F5F5;
+    -fx-font-size: 18px;
+}
+
+.status {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 4 14 4 14;
+    -fx-background-radius: 12;
+}
+
+.status-ouvert {
+    -fx-text-fill: #FA500F;
+    -fx-background-color: #FFF5BC;
+}
+
+.status-ferme {
+    -fx-text-fill: #E17DD2;
+    -fx-background-color: #FFF5BC;
 }
