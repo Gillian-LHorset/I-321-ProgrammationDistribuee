@@ -21,6 +21,9 @@ public class MqttService {
 
     private static MqttClient client;
 
+    /** Topic sur lequel le back-office publie ses logs (ouvert/ferme). */
+    public static final String TOPIC_LOG = "umddcmid3b/log";
+
     private static Consumer<Integer> timeListener;
 
     /** Dernier instant (ms) où une enveloppe SERV-Time a été reçue. */
@@ -76,7 +79,7 @@ public class MqttService {
                 }
             });
             client.connect(options);
-            client.subscribe("umddcmid3b/time");
+            client.subscribe("umddcmid3b/timebackup");
         } catch (MqttException e) {
             throw new RuntimeException(e);
         }
